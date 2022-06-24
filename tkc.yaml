@@ -1,0 +1,48 @@
+apiVersion: run.tanzu.vmware.com/v1alpha2
+kind: TanzuKubernetesCluster
+metadata:
+  annotations:
+  labels:
+    run.tanzu.vmware.com/tkr: v1.20.12---vmware.1-tkg.1.b9a42f3
+  name: cnvrg-cluster
+  namespace: piper
+spec:
+  distribution:
+    fullVersion: 1.20.12+vmware.1-tkg.1.b9a42f3
+    version: v1.20.12
+  settings:
+    network:
+      cni:
+        name: calico
+      pods:
+        cidrBlocks:
+        - 192.0.2.0/24
+      serviceDomain: cluster.local
+      services:
+        cidrBlocks:
+        - 198.51.100.0/24
+    storage:
+      classes:
+      - vsan-default-storage-policy
+      defaultClass: vsan-default-storage-policy
+  topology:
+    controlPlane:
+      replicas: 1
+      storageClass: vsan-default-storage-policy
+      tkr:
+        reference:
+          name: v1.20.12---vmware.1-tkg.1.b9a42f3
+      vmClass: best-effort-large
+    nodePools:
+    - name: workers
+      replicas: 5
+      storageClass: vsan-default-storage-policy
+      tkr:
+        reference:
+          name: v1.20.12---vmware.1-tkg.1.b9a42f3
+      vmClass: cnvrg-reg
+      volumes:
+      - capacity:
+          storage: 100Gi
+        mountPath: /var/lib/containerd
+        name: ephemeral

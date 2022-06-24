@@ -1,0 +1,17 @@
+apiVersion: vmoperator.vmware.com/v1alpha1
+kind: VirtualMachineClass
+metadata:
+  name: cnvrg-reg
+spec:
+  hardware:
+    cpus: 6
+    devices: {}
+    memory: 16Gi
+  policies:
+    resources:
+      limits:
+        cpu: "0"
+        memory: "0"
+      requests:
+        cpu: "0"
+        memory: "0"

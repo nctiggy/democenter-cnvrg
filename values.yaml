@@ -1,0 +1,28 @@
+registry:
+  user: cnvrghelm
+  password: abbb7835-fef8-42af-be0f-ef6750bde5a0
+controlPlane:
+  image: cnvrg/app:v3.12.17
+  baseConfig:
+    featureFlags:
+      CNVRG_MOUNT_HOST_FOLDERS: false
+  mpi:
+    registry:
+      user: cnvrghelm
+      password: abbb7835-fef8-42af-be0f-ef6750bde5a0
+clusterDomain: cnvrg.demo.local
+dbs:
+  redis:
+    storageClass: cnvrg
+  minio:
+    storageClass: cnvrg
+  pg:
+    storageClass: cnvrg
+  es:
+    storageClass: cnvrg
+logging:
+  elastalert:
+    storageClass: cnvrg
+monitoring:
+  prometheus:
+    storageClass: cnvrg
