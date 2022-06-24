@@ -1,3 +1,4 @@
+#!/bin/bash
 kubectl config use-context cnvrg-cluster
 
 kubectl apply -f storage-class.yaml
