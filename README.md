@@ -7,6 +7,7 @@
 * https://github.com/nctiggy/democenter-cnvrg
 * Scripts 01 and 02 Will do all of the following.
 * To delete the cluster/environment run script 00
+* Need to pre-prep images on the nodes. Getting connection reset errors periodically on image pulls. How can we do this?
 
 ## Tanzu Supervisor Cluster Prep
 ### VirtualMachineClass
