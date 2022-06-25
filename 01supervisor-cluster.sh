@@ -7,7 +7,7 @@ kubectl config use-context piper
 kubectl apply -f tkc.yaml
 
 printf "Provisioning Guest Cluster..."
-until [ $(kubectl get tkc cnvrg-cluster -o=jsonpath={.status.phase}) == "running" ]
+until [[ -n $(kubectl get tkc cnvrg-cluster -o=jsonpath={.status.phase}) ]]
 do
   printf "."
   sleep 1m
