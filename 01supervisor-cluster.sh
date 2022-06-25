@@ -7,8 +7,8 @@ kubectl apply -f vmclass.yaml
 #create the guest cluster for cnvrg
 kubectl apply -f tkc.yaml
 
-printf "Provisioning Guest Cluster...
-until $(kubectl get tkc tkc-cluster-01 -o=jsonpath={.status.phase}) == "running"
+printf "Provisioning Guest Cluster..."
+until [ $(kubectl get tkc cnvrg-cluster -o=jsonpath={.status.phase}) == "running" ]
 do
   printf "."
   sleep 1m
