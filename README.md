@@ -6,7 +6,7 @@
 * This will deploy to http://app.cnvrg.demo.local
 * https://github.com/nctiggy/democenter-cnvrg
 * Scripts 01 and 02 Will do all of the following.
-* To delete the cluster/environment run `kubectl config use-context piper && kubectl delete tkc cnvrg-cluster`
+* To delete the cluster/environment run `kubectl config use-context piper && kubectl delete tkc cnvrg-cluster --wait=false`
 
 ## Tanzu Supervisor Cluster Prep
 ### VirtualMachineClass
