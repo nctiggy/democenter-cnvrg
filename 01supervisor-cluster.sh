@@ -4,26 +4,31 @@ POWDER_BLUE=$(tput setaf 153)
 MAGENTA=$(tput setaf 5)
 NORMAL=$(tput sgr0)
 GREEN=$(tput setaf 2)
+CHECK="\xE2\x9C\x94"
 
 #Make sure we are targeting the supervisor cluster
-kubectl config use-context piper
+printf "${POWDER_BLUE}Switch context to piper${NORMAL}..."
+kubectl config use-context piper > /dev/null 2>&1
+printf "${GREEN}${CHECK}${NORMAL}\n"
 
 #create the guest cluster for cnvrg
-kubectl apply -f tkc.yaml
+printf "${POWDER_BLUE}Provisioning Guest Cluster${NORMAL}"
+kubectl apply -f tkc.yaml > /dev/null 2>&1
 
-printf "${POWDER_BLUE}Provisioning Guest Cluster"
 until [[ -n $(kubectl get tkc cnvrg-cluster -o=jsonpath={.status.phase}) ]]
 do
-  printf "${NORMAL}."
+  printf "."
   sleep 15s
 done
 printf "${GREEN}Init Complete!\n"
-printf "${POWDER_BLUE}Creating Nodes"
+printf "${POWDER_BLUE}Creating Nodes${NORMAL}"
 until [[ $(kubectl get tkc cnvrg-cluster -o=jsonpath={.status.phase}) == "running" ]]
 do
-  printf "${NORMAL}."
-  sleep 15s
+  printf "."
+  sleep 30s
 done
 
-printf "${GREEN}Cluster Complete!\n\n"
-printf "${MAGENTA}Run script 02 now\n"
+printf "${GREEN}${CHECK}${NORMAL}\n\n"
+
+printf "${GREEN}k8s Cluster Ready!${NORMAL}\n"
+printf "${MAGENTA}Run script 02 now${NORMAL}\n"
