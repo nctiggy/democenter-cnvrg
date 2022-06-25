@@ -11,18 +11,18 @@ kubectl config use-context piper
 #create the guest cluster for cnvrg
 kubectl apply -f tkc.yaml
 
-printf "${POWDER_BLUE}Provisioning Guest Cluster..."
+printf "${POWDER_BLUE}Provisioning Guest Cluster"
 until [[ -n $(kubectl get tkc cnvrg-cluster -o=jsonpath={.status.phase}) ]]
 do
   printf "${NORMAL}."
-  sleep 1m
+  sleep 15s
 done
 printf "${GREEN}Init Complete!\n"
 printf "${POWDER_BLUE}Creating Nodes"
 until [[ $(kubectl get tkc cnvrg-cluster -o=jsonpath={.status.phase}) == "running" ]]
 do
   printf "${NORMAL}."
-  sleep 1m
+  sleep 15s
 done
 
 printf "${GREEN}Cluster Complete!\n\n"
