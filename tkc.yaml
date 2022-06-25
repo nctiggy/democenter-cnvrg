@@ -40,7 +40,7 @@ spec:
       tkr:
         reference:
           name: v1.20.12---vmware.1-tkg.1.b9a42f3
-      vmClass: cnvrg-worker
+      vmClass: cnvrg-reg
       volumes:
       - capacity:
           storage: 100Gi
