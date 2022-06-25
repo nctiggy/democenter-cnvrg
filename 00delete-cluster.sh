@@ -16,7 +16,7 @@ kubectl delete tkc cnvrg-cluster --wait=false > /dev/null 2>&1
 until [ $? == 1 ]
 do
   printf "."
-  sleep 30s
+  sleep 20s
   kubectl get tkc cnvrg-cluster > /dev/null 2>&1
 done
 
