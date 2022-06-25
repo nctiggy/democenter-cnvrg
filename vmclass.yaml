@@ -1,7 +1,7 @@
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachineClass
 metadata:
-  name: cnvrg-reg
+  name: cnvrg-workers
 spec:
   hardware:
     cpus: 6
