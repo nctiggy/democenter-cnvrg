@@ -5,7 +5,7 @@
 * Create wildcard A record and point to 192.168.140.250
 * This will deploy to http://app.cnvrg.demo.local
 * https://github.com/nctiggy/democenter-cnvrg
-* Run scripts 01 and 02
+* Scripts 01 and 02 Will do all of the following.
 
 ## Tanzu Supervisor Cluster Prep
 ### VirtualMachineClass
