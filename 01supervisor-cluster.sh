@@ -15,3 +15,4 @@ do
 done
 
 printf "Done!\n"
+printf "Run script 02 now\n"
