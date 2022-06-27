@@ -6,7 +6,10 @@ NORMAL=$(tput sgr0)
 GREEN=$(tput setaf 2)
 CHECK="\xE2\x9C\x94"
 
-#Make sure we are targeting the supervisor cluster
+printf "${POWDER_BLUE}Input cnvrghelm registry password value: ${NORMAL}"
+read registry_pw
+printf "\n\nSuccess!\n"
+
 printf "${POWDER_BLUE}Logging into k8s via vSphere${NORMAL}..."
 export KUBECTL_VSPHERE_PASSWORD=Password123!
 kubectl vsphere login --server=https://192.168.140.210 --vsphere-username administrator@vsphere.local --tanzu-kubernetes-cluster-namespace piper --tanzu-kubernetes-cluster-name cnvrg-cluster --insecure-skip-tls-verify > /dev/null 2>&1
@@ -45,7 +48,7 @@ helm repo update > /dev/null 2>&1
 printf "${GREEN}${CHECK}${NORMAL}\n"
 
 printf "${POWDER_BLUE}Intalling cnvrg${NORMAL}..."
-helm upgrade --install cnvrg cnvrgv3/cnvrg -n cnvrg --create-namespace --wait --timeout 10m0s --values values.yaml > /dev/null 2>&1 &
+helm upgrade --install cnvrg cnvrgv3/cnvrg -n cnvrg --create-namespace --wait --timeout 10m0s --values values.yaml --set registry.password=$registry_pw --set mpi.registry.password=$registry_pw > /dev/null 2>&1 &
 pid=$!
 while [ "$(ps a | awk '{print $1}' | grep $pid)" ]
 do
