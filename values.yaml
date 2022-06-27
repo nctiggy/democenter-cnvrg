@@ -1,6 +1,5 @@
 registry:
   user: cnvrghelm
-  password: abbb7835-fef8-42af-be0f-ef6750bde5a0
 controlPlane:
   image: cnvrg/app:v3.12.17
   baseConfig:
@@ -9,7 +8,6 @@ controlPlane:
   mpi:
     registry:
       user: cnvrghelm
-      password: abbb7835-fef8-42af-be0f-ef6750bde5a0
 clusterDomain: cnvrg.demo.local
 dbs:
   redis:
